@@ -34,6 +34,10 @@ export const metadata: Metadata = {
     title: "Salvemos El Espino",
     description: "Protege el pulmón verde de San Salvador. Firma la petición.",
   },
+  icons: {
+    icon: "/logo.svg",
+    apple: "/logo.svg",
+  },
   robots: { index: true, follow: true },
 };
 
