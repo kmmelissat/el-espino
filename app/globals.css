@@ -14,6 +14,7 @@
   --color-gray-neutral: #64748B;
 
   --font-sans: var(--font-cause);
+  --font-display: var(--font-climate);
 }
 
 :root {

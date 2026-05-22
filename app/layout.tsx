@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Cause } from "next/font/google";
+import { Cause, Climate_Crisis } from "next/font/google";
 import "./globals.css";
 
 const cause = Cause({
   variable: "--font-cause",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  // variable font — carga el eje wght completo (100–900)
+});
+
+const climateCrisis = Climate_Crisis({
+  variable: "--font-climate",
+  subsets: ["latin"],
+  // variable font — eje YEAR 1979–2050, un solo peso real
 });
 
 export const metadata: Metadata = {
@@ -34,7 +40,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className={`${cause.variable} scroll-smooth`}>
+    <html lang="es" className={`${cause.variable} ${climateCrisis.variable} scroll-smooth`}>
       <body className="min-h-screen antialiased">{children}</body>
     </html>
   );
