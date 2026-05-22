@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import StatsCounter from "./components/StatsCounter";
 import ProblemCards from "./components/ProblemCards";
+import InformateSection from "./components/InformateSection";
 import VocesSection from "./components/VocesSection";
 
 import MovementSection from "./components/MovementSection";
@@ -15,7 +16,9 @@ export default function Home() {
       <HeroSection />
       <StatsCounter />
       <ProblemCards />
-            <VocesSection />
+
+      <VocesSection />
+            <InformateSection />
       <MovementSection />
       <CTASection />
       <Footer />

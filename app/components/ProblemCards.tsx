@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { PETITION_URL } from "@/app/constants";
+import { PETITION_URL, SIGNATURE_COUNT } from "@/app/constants";
 
 const problems = [
   {
@@ -73,7 +73,7 @@ export default function ProblemCards() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="problema" ref={ref} className="relative py-20 bg-white overflow-hidden">
+    <section id="problema" ref={ref} className="relative pt-20 pb-0 bg-white overflow-hidden">
       <div className="max-w-360 mx-auto px-5 sm:px-10 lg:px-16 xl:px-20">
 
         {/* Header */}
@@ -165,20 +165,24 @@ export default function ProblemCards() {
           ))}
         </div>
 
-        {/* Bottom CTA strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.65 }}
-          className="mt-14 border-t border-red-200 pt-10 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8"
-        >
+
+      </div>
+
+      {/* Bottom CTA strip — full width */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.65 }}
+        className="mt-14 bg-green-primary overflow-hidden"
+      >
+        <div className="max-w-360 mx-auto px-5 sm:px-10 lg:px-16 xl:px-20 py-8 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
           <span className="text-2xl">⏳</span>
           <div className="flex-1">
             <p className="font-display text-xl sm:text-2xl text-navy leading-snug mb-1">
-              Aún podemos evitarlo.
+              Ya somos <span className="font-black">{SIGNATURE_COUNT}</span> — vamos por 1,000,000.
             </p>
-            <p className="text-navy/40 text-sm leading-relaxed">
-              La decisión está en nuestras manos — pero el tiempo se acaba. Actúa ahora antes de que sea demasiado tarde.
+            <p className="text-navy/60 text-sm leading-relaxed">
+              Cada firma acerca la meta. Actúa ahora antes de que sea demasiado tarde.
             </p>
           </div>
           <a
@@ -190,9 +194,8 @@ export default function ProblemCards() {
             ✍️ Firma Ahora
             <ArrowUpRight className="w-4 h-4" />
           </a>
-        </motion.div>
-
-      </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

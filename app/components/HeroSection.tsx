@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import { PETITION_URL } from "@/app/constants";
+import { PETITION_URL, SIGNATURE_COUNT } from "@/app/constants";
 
 const marqueeWords = [
   "REFORESTACIÓN",
@@ -74,7 +74,7 @@ export default function HeroSection() {
               </div>
               <div>
                 <p className="text-[42px] font-black text-[#0F172A] leading-none">
-                  170k<span className="text-[#22D478]">+</span>
+                  {SIGNATURE_COUNT}<span className="text-green-primary">+</span>
                 </p>
                 <p className="text-[#0F172A]/45 text-[10px] font-bold tracking-[0.18em] uppercase mt-1">
                   PERSONAS UNIDAS
