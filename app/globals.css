@@ -66,7 +66,7 @@ body {
 .glow-orange { box-shadow: 0 0 30px rgba(255, 107, 53, 0.4); }
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0F172A; }
+::-webkit-scrollbar-track { background: #f0fdf4; }
 ::-webkit-scrollbar-thumb { background: #22D478; border-radius: 3px; }
 
 @keyframes pulse-green {

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import { PETITION_URL } from "@/app/constants";
 
 const tags = ["Reforestación", "Conservación", "Acción"];
 
@@ -24,19 +25,19 @@ export default function HeroSection() {
   const [activeTag, setActiveTag] = useState(0);
 
   return (
-    <section className="relative min-h-screen bg-[#E8FDDB] flex flex-col overflow-hidden">
+    <section className="relative lg:min-h-screen bg-green-extra-light flex flex-col overflow-hidden">
       {/* Main content area */}
-      <div className="flex-1 flex flex-col lg:flex-row items-stretch gap-6 lg:gap-10 px-6 sm:px-10 lg:px-16 xl:px-20 pt-28 pb-8 max-w-[1440px] mx-auto w-full">
+      <div className="flex-1 flex flex-col lg:flex-row items-stretch gap-5 lg:gap-10 px-5 sm:px-10 lg:px-16 xl:px-20 pt-20 sm:pt-24 lg:pt-28 pb-4 lg:pb-8 max-w-360 mx-auto w-full">
 
-        {/* ── LEFT SIDE (40%) ── */}
-        <div className="w-full lg:w-[40%] flex flex-col justify-between gap-10 lg:gap-0">
+{/* ── LEFT SIDE (40%) ── */}
+        <div className="w-full lg:w-[40%] flex flex-col justify-between gap-6 lg:gap-0 order-2 lg:order-1">
 
-          {/* 1. Small caps header */}
+          {/* 1. Small caps header — desktop only */}
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-[#0F172A]/50 text-[11px] font-bold tracking-[0.2em] uppercase leading-relaxed"
+            className="hidden lg:block text-navy/50 text-[11px] font-bold tracking-[0.2em] uppercase leading-relaxed"
           >
             SOMOS UN MOVIMIENTO<br />
             DE AMANTES DE LA NATURALEZA<br />
@@ -96,7 +97,7 @@ export default function HeroSection() {
                 <button
                   key={tag}
                   onClick={() => setActiveTag(i)}
-                  className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-200 ${
+                  className={`px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 ${
                     activeTag === i
                       ? "bg-[#0F172A] text-white"
                       : "border-2 border-[#0F172A]/15 text-[#0F172A] hover:border-[#22D478] hover:text-[#1BA961]"
@@ -113,7 +114,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-[52px] sm:text-[62px] lg:text-[56px] xl:text-[64px] font-regular text-[#0F172A] leading-[0.92] [font-family:var(--font-climate)]"
+            className="text-[36px] sm:text-[56px] lg:text-[52px] xl:text-[64px] font-regular text-[#0F172A] leading-[0.92] [font-family:var(--font-climate)]"
             style={{ fontVariationSettings: "'YEAR' 2030" }}
           >
             Salvemos<br />
@@ -139,7 +140,7 @@ export default function HeroSection() {
             className="flex flex-col sm:flex-row gap-3"
           >
             <a
-              href="https://www.change.org"
+              href={PETITION_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#22D478] text-[#0F172A] font-black text-sm hover:bg-[#1BA961] hover:text-white transition-all duration-200 shadow-lg shadow-[#22D478]/20"
@@ -161,11 +162,56 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="w-full lg:w-[60%]"
-          style={{ minHeight: "clamp(480px, 65vh, 700px)" }}
+          className="w-full lg:w-[60%] h-80 lg:h-auto lg:min-h-[clamp(480px,65vh,700px)] order-1 lg:order-2"
         >
+          {/* mobile: 2-col simplified / desktop: full mosaic */}
           <div
-            className="w-full h-full grid gap-3"
+            className="w-full h-full grid gap-3 lg:hidden"
+            style={{
+              gridTemplateColumns: "1fr 1fr",
+              gridTemplateRows: "1.4fr 1fr",
+              gridTemplateAreas: `"main main" "eco3 stat"`,
+            }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.25, duration: 0.6 }}
+              className="relative rounded-2xl overflow-hidden"
+              style={{ gridArea: "main" }}
+            >
+              <Image src="/assets/ecoparque2.jpg" alt="Bosque El Espino" fill sizes="100vw" className="object-cover" priority />
+              <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-3">
+                <span className="bg-green-primary text-navy text-[10px] font-black px-2.5 py-1 rounded-full tracking-wide uppercase">
+                  Ecoparque El Espino
+                </span>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.5 }}
+              className="relative rounded-2xl overflow-hidden"
+              style={{ gridArea: "eco3" }}
+            >
+              <Image src="/assets/ecoparque3.jpeg" alt="Panorámica El Espino" fill sizes="50vw" className="object-cover" />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.45, duration: 0.5 }}
+              className="rounded-2xl bg-green-primary flex flex-col items-center justify-center gap-1 text-center px-2"
+              style={{ gridArea: "stat" }}
+            >
+              <span className="text-[38px] font-black text-navy leading-none [font-family:var(--font-climate)]" style={{ fontVariationSettings: "'YEAR' 2030" }}>91</span>
+              <span className="text-navy/70 text-[9px] font-bold tracking-widest uppercase leading-tight">Hectáreas<br />de Bosque</span>
+            </motion.div>
+          </div>
+
+          {/* desktop: full 3-col mosaic */}
+          <div
+            className="w-full h-full hidden lg:grid gap-3"
             style={{
               gridTemplateColumns: "1.4fr 0.65fr 1fr",
               gridTemplateRows: "1.6fr 1fr",
@@ -184,6 +230,7 @@ export default function HeroSection() {
                 src="/assets/ecoparque2.jpg"
                 alt="Bosque El Espino"
                 fill
+                sizes="(max-width: 1024px) 0px, 50vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 priority
               />
@@ -208,6 +255,7 @@ export default function HeroSection() {
                 src="/assets/torogoz.jpeg"
                 alt="Torogoz, ave nacional de El Salvador"
                 fill
+                sizes="(max-width: 1024px) 0px, 20vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
@@ -234,6 +282,7 @@ export default function HeroSection() {
                 src="/assets/ecoparque3.jpeg"
                 alt="Panorámica El Espino"
                 fill
+                sizes="(max-width: 1024px) 0px, 25vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </motion.div>
@@ -266,6 +315,7 @@ export default function HeroSection() {
                 src="/assets/mapache1.jpg"
                 alt="Mapache, fauna de El Espino"
                 fill
+                sizes="(max-width: 1024px) 0px, 20vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
@@ -279,7 +329,7 @@ export default function HeroSection() {
       </div>
 
       {/* ── BOTTOM MARQUEE TICKER ── */}
-      <div className="w-full bg-[#0F172A] py-4 overflow-hidden mt-8">
+      <div className="w-full bg-[#0F172A] py-4 overflow-hidden mt-4">
         <div className="flex">
           <motion.div
             animate={{ x: ["0%", "-50%"] }}
