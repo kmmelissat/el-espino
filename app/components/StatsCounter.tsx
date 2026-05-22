@@ -2,138 +2,117 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Trees, Users, Calendar, AlertTriangle } from "lucide-react";
 
-interface StatItem {
-  icon: React.ElementType;
-  value: number;
-  suffix: string;
-  label: string;
-  sublabel: string;
-  color: string;
-}
-
-const stats: StatItem[] = [
+const stats = [
   {
-    icon: Trees,
-    value: 91,
-    suffix: " ha",
-    label: "Hectáreas de Bosque",
-    sublabel: "del pulmón verde de San Salvador",
-    color: "#22D478",
-  },
-  {
-    icon: AlertTriangle,
     value: 55711,
     suffix: " m²",
-    label: "En Peligro Inmediato",
-    sublabel: "área afectada por el proyecto CIFCO",
+    label: "Área a transferir a CIFCO",
+    sublabel: "11.71% del total del Parque Bicentenario",
     color: "#EF4444",
   },
   {
-    icon: Users,
-    value: 7000,
+    value: 91,
+    suffix: " ha",
+    label: "Parque Bicentenario",
+    sublabel: "área natural protegida por ley desde 2009",
+    color: "#22D478",
+  },
+  {
+    value: 250,
     suffix: "+",
-    label: "Firmas Recolectadas",
-    sublabel: "salvadoreños dicen #NoAlCIFCO",
+    label: "Árboles Marcados",
+    sublabel: "algunos de hasta 10 metros de altura",
     color: "#FF6B35",
   },
   {
-    icon: Calendar,
-    value: 100,
-    suffix: "+ años",
-    label: "De Historia",
-    sublabel: "El Espino ha protegido San Salvador",
+    value: 25,
+    suffix: "%",
+    label: "Estimado a Deforestar",
+    sublabel: "del terreno transferido será talado",
     color: "#BEF6AF",
   },
 ];
 
-function Counter({ value, suffix, color }: { value: number; suffix: string; color: string }) {
+function Counter({ value, suffix, color, inView }: { value: number; suffix: string; color: string; inView: boolean }) {
   const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true });
 
   useEffect(() => {
     if (!inView) return;
-    const duration = 2000;
     const steps = 60;
     const increment = value / steps;
     let current = 0;
     const timer = setInterval(() => {
       current += increment;
-      if (current >= value) {
-        setCount(value);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(current));
-      }
-    }, duration / steps);
+      if (current >= value) { setCount(value); clearInterval(timer); }
+      else { setCount(Math.floor(current)); }
+    }, 2000 / steps);
     return () => clearInterval(timer);
   }, [inView, value]);
 
   return (
-    <span ref={ref} style={{ color }} className="text-4xl sm:text-5xl font-black">
+    <span
+      className="font-display leading-none"
+      style={{ color, fontSize: "clamp(1.6rem, 2.8vw, 2.8rem)" }}
+    >
       {count.toLocaleString("es-SV")}
-      <span className="text-3xl sm:text-4xl">{suffix}</span>
+      <span style={{ fontSize: "clamp(0.9rem, 1.6vw, 1.6rem)" }}>{suffix}</span>
     </span>
   );
 }
 
 export default function StatsCounter() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-24 bg-[#0F172A] overflow-hidden"
-    >
-      {/* Background accent */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,212,120,0.06)_0%,transparent_70%)]" />
+    <section ref={ref} className="relative bg-navy overflow-hidden">
+      {/* Subtle radial glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,212,120,0.04)_0%,transparent_65%)] pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
+      {/* Top label */}
+      <div className="max-w-360 mx-auto px-5 sm:px-10 lg:px-16 xl:px-20 pt-16 pb-6">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="flex items-center gap-3 text-white/25 text-[10px] font-bold tracking-[0.3em] uppercase"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#22D478]/10 border border-[#22D478]/30 text-[#22D478] text-sm font-semibold mb-4">
-            Los Números No Mienten
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white">
-            La magnitud del{" "}
-            <span className="gradient-text">problema</span>
-          </h2>
-        </motion.div>
+          <span className="w-6 h-px bg-green-primary/40" />
+          Los números no mienten
+        </motion.p>
+      </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {stats.map((stat, i) => {
-            const Icon = stat.icon;
-            return (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 40 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                whileHover={{ y: -6, scale: 1.02 }}
-                className="glass rounded-2xl p-6 text-center group cursor-default"
-                style={{ borderColor: `${stat.color}30` }}
-              >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform"
-                  style={{ backgroundColor: `${stat.color}20` }}
-                >
-                  <Icon className="w-6 h-6" style={{ color: stat.color }} />
-                </div>
-                <Counter value={stat.value} suffix={stat.suffix} color={stat.color} />
-                <p className="text-white font-bold mt-2 mb-1">{stat.label}</p>
-                <p className="text-white/50 text-sm leading-snug">{stat.sublabel}</p>
-              </motion.div>
-            );
-          })}
+      {/* Stats row */}
+      <div className="max-w-360 mx-auto px-5 sm:px-10 lg:px-16 xl:px-20 pb-16">
+        <div className="grid grid-cols-2 lg:grid-cols-4">
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 24 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="py-5 pr-4 lg:pr-0 lg:pl-10 lg:first:pl-0 lg:border-l lg:border-white/8 lg:first:border-l-0 flex flex-col gap-2 group"
+            >
+              <Counter value={stat.value} suffix={stat.suffix} color={stat.color} inView={inView} />
+
+              <div className="mt-1">
+                <p className="text-white font-bold text-sm leading-snug">{stat.label}</p>
+                <p className="text-white/35 text-[13px] leading-relaxed mt-0.5">{stat.sublabel}</p>
+              </div>
+
+              {/* Animated underline on hover */}
+              <div
+                className="h-px w-0 group-hover:w-full transition-all duration-500 mt-1"
+                style={{ background: `linear-gradient(90deg, ${stat.color}, transparent)` }}
+              />
+            </motion.div>
+          ))}
         </div>
       </div>
+
+      {/* Bottom divider line */}
+      <div className="h-px bg-white/5 max-w-7xl mx-auto" />
     </section>
   );
 }
