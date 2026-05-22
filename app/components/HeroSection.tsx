@@ -143,7 +143,7 @@ export default function HeroSection() {
               href={PETITION_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#22D478] text-[#0F172A] font-black text-sm hover:bg-[#1BA961] hover:text-white transition-all duration-200 shadow-lg shadow-[#22D478]/20"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-orange-vibrant text-white font-black text-sm hover:bg-[#d4511f] transition-all duration-200 shadow-lg shadow-orange-200 pulse-btn"
             >
               ✍️ Firma la Petición
               <ArrowUpRight className="w-4 h-4" />
