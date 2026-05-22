@@ -15,6 +15,7 @@ const climateCrisis = Climate_Crisis({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://salvemoselespino.sv"),
   title: "Salvemos El Espino | Protege el Pulmón de San Salvador",
   description:
     "Únete al movimiento ciudadano para salvar El Espino del proyecto CIFCO. Firma la petición y protege el pulmón verde de San Salvador.",
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_SV",
     siteName: "Salvemos El Espino",
-    images: [{ url: "/logo.svg", width: 1500, height: 1500, alt: "El Espino" }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Salvemos El Espino — Protege el Pulmón Verde de San Salvador" }],
   },
   twitter: {
     card: "summary_large_image",
