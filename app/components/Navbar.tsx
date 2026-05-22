@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import { PETITION_URL } from "@/app/constants";
 
 const navLinks = [
   { label: "El Problema", href: "#problema" },
@@ -15,25 +16,12 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dark, setDark] = useState(true);
-
-  useEffect(() => {
-    document.documentElement.classList.add("dark");
-  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const toggleDark = () => {
-    setDark((prev) => {
-      const next = !prev;
-      document.documentElement.classList.toggle("dark", next);
-      return next;
-    });
-  };
 
   return (
     <>
@@ -43,7 +31,7 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "glass shadow-lg shadow-black/20"
+            ? "bg-[#f0fdf4]/40 backdrop-blur-md"
             : "bg-transparent"
         }`}
       >
@@ -67,7 +55,7 @@ export default function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-white/80 hover:text-[#22D478] font-medium transition-colors duration-200 text-sm"
+                  className="text-green-dark/80 hover:text-green-very-dark font-semibold transition-colors duration-200 text-sm tracking-wide"
                 >
                   {link.label}
                 </a>
@@ -76,23 +64,19 @@ export default function Navbar() {
 
             {/* Right side */}
             <div className="flex items-center gap-3">
-              <button
-                onClick={toggleDark}
-                className="w-9 h-9 rounded-full glass flex items-center justify-center text-white/70 hover:text-[#22D478] transition-colors"
-                aria-label="Toggle dark mode"
-              >
-                {dark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-              </button>
-
               <a
-                href="#actua"
-                className="hidden md:block px-5 py-2 rounded-full bg-[#FF6B35] text-white font-semibold text-sm hover:bg-[#d4511f] transition-all duration-200 hover:scale-105 pulse-btn"
+                href={PETITION_URL}
+                className="hidden md:block px-5 py-2 rounded-full bg-orange-vibrant text-white font-bold text-sm hover:bg-[#d4511f] transition-all duration-200 hover:scale-105 shadow-md shadow-orange-200 pulse-btn"
               >
                 Firma Ahora
               </a>
 
               <button
-                className="md:hidden w-9 h-9 rounded-full glass flex items-center justify-center text-white"
+                className={`md:hidden w-9 h-9 rounded-full flex items-center justify-center transition-colors ${
+                  scrolled
+                    ? "bg-green-100 text-green-800 hover:bg-green-200"
+                    : "bg-white/30 backdrop-blur-sm text-green-900 hover:bg-white/50"
+                }`}
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-label="Toggle menu"
               >
@@ -107,26 +91,26 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed top-16 left-0 right-0 z-40 glass border-t border-white/10 md:hidden"
+            exit={{ opacity: 0, y: -12 }}
+            className="fixed top-16 left-0 right-0 z-40 bg-[#f0fdf4]/95 backdrop-blur-md border-b border-green-200 md:hidden"
           >
-            <div className="flex flex-col p-4 gap-3">
+            <div className="flex flex-col p-4 gap-2">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="text-white/80 hover:text-[#22D478] font-medium py-2 px-3 rounded-lg hover:bg-white/5 transition-all"
+                  className="text-green-dark hover:text-green-very-dark font-semibold py-2 px-3 rounded-lg hover:bg-green-100 transition-all"
                 >
                   {link.label}
                 </a>
               ))}
               <a
-                href="#actua"
+                href={PETITION_URL}
                 onClick={() => setMenuOpen(false)}
-                className="mt-2 text-center py-3 rounded-full bg-[#FF6B35] text-white font-bold hover:bg-[#d4511f] transition-colors"
+                className="mt-2 text-center py-3 rounded-full bg-orange-vibrant text-white font-bold hover:bg-[#d4511f] transition-colors shadow-md shadow-orange-200"
               >
                 Firma Ahora
               </a>
