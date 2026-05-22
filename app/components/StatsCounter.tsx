@@ -20,7 +20,7 @@ const stats: StatItem[] = [
     suffix: " ha",
     label: "Hectáreas de Bosque",
     sublabel: "del pulmón verde de San Salvador",
-    color: "#10B981",
+    color: "#22D478",
   },
   {
     icon: AlertTriangle,
@@ -36,7 +36,7 @@ const stats: StatItem[] = [
     suffix: "+",
     label: "Firmas Recolectadas",
     sublabel: "salvadoreños dicen #NoAlCIFCO",
-    color: "#F97316",
+    color: "#FF6B35",
   },
   {
     icon: Calendar,
@@ -44,7 +44,7 @@ const stats: StatItem[] = [
     suffix: "+ años",
     label: "De Historia",
     sublabel: "El Espino ha protegido San Salvador",
-    color: "#34D399",
+    color: "#BEF6AF",
   },
 ];
 
@@ -89,7 +89,7 @@ export default function StatsCounter() {
       className="relative py-24 bg-[#0F172A] overflow-hidden"
     >
       {/* Background accent */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.06)_0%,transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,212,120,0.06)_0%,transparent_70%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -98,7 +98,7 @@ export default function StatsCounter() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#10B981]/10 border border-[#10B981]/30 text-[#10B981] text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-[#22D478]/10 border border-[#22D478]/30 text-[#22D478] text-sm font-semibold mb-4">
             Los Números No Mienten
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white">

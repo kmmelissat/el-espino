@@ -20,8 +20,8 @@ const problems = [
     title: "Calidad del Aire",
     description:
       "91 hectáreas de bosque producen oxígeno y filtran toneladas de CO₂ al año. El Espino es el pulmón que San Salvador no puede perder.",
-    color: "#10B981",
-    bgColor: "rgba(16,185,129,0.08)",
+    color: "#22D478",
+    bgColor: "rgba(34,212,120,0.08)",
   },
   {
     icon: Thermometer,
@@ -38,8 +38,8 @@ const problems = [
     title: "Biodiversidad en Peligro",
     description:
       "Cientos de especies de aves, mamíferos y plantas nativas viven en El Espino. Su destrucción causaría una extinción local irreversible.",
-    color: "#F97316",
-    bgColor: "rgba(249,115,22,0.08)",
+    color: "#FF6B35",
+    bgColor: "rgba(255,107,53,0.08)",
   },
   {
     icon: Building,
@@ -56,8 +56,8 @@ const problems = [
     title: "Patrimonio Irreemplazable",
     description:
       "Un bosque de más de 100 años no se puede recuperar. Una vez destruido, generaciones futuras nunca podrán conocer el Espino original.",
-    color: "#34D399",
-    bgColor: "rgba(52,211,153,0.08)",
+    color: "#BEF6AF",
+    bgColor: "rgba(190,246,175,0.08)",
   },
 ];
 

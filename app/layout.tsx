@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Cause } from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const cause = Cause({
+  variable: "--font-cause",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_SV",
     siteName: "Salvemos El Espino",
+    images: [{ url: "/logo.svg", width: 1500, height: 1500, alt: "El Espino" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -33,7 +34,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className={`${poppins.variable} scroll-smooth`}>
+    <html lang="es" className={`${cause.variable} scroll-smooth`}>
       <body className="min-h-screen antialiased">{children}</body>
     </html>
   );

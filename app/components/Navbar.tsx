@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { TreePine, Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
+import Image from "next/image";
 
 const navLinks = [
   { label: "El Problema", href: "#problema" },
@@ -49,14 +50,15 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <a href="#" className="flex items-center gap-2 group">
-              <div className="w-9 h-9 rounded-full bg-[#10B981] flex items-center justify-center glow-green group-hover:scale-110 transition-transform">
-                <TreePine className="w-5 h-5 text-white" />
-              </div>
-              <span className="font-bold text-lg hidden sm:block">
-                <span className="gradient-text">El</span>{" "}
-                <span className="text-white">Espino</span>
-              </span>
+            <a href="#" className="flex items-center group">
+              <Image
+                src="/logo.svg"
+                alt="El Espino"
+                width={48}
+                height={48}
+                className="group-hover:scale-110 transition-transform"
+                priority
+              />
             </a>
 
             {/* Desktop Links */}
@@ -65,7 +67,7 @@ export default function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-white/80 hover:text-[#10B981] font-medium transition-colors duration-200 text-sm"
+                  className="text-white/80 hover:text-[#22D478] font-medium transition-colors duration-200 text-sm"
                 >
                   {link.label}
                 </a>
@@ -76,7 +78,7 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               <button
                 onClick={toggleDark}
-                className="w-9 h-9 rounded-full glass flex items-center justify-center text-white/70 hover:text-[#10B981] transition-colors"
+                className="w-9 h-9 rounded-full glass flex items-center justify-center text-white/70 hover:text-[#22D478] transition-colors"
                 aria-label="Toggle dark mode"
               >
                 {dark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -84,7 +86,7 @@ export default function Navbar() {
 
               <a
                 href="#actua"
-                className="hidden md:block px-5 py-2 rounded-full bg-[#F97316] text-white font-semibold text-sm hover:bg-[#ea6c0a] transition-all duration-200 hover:scale-105 pulse-btn"
+                className="hidden md:block px-5 py-2 rounded-full bg-[#FF6B35] text-white font-semibold text-sm hover:bg-[#d4511f] transition-all duration-200 hover:scale-105 pulse-btn"
               >
                 Firma Ahora
               </a>
@@ -116,7 +118,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="text-white/80 hover:text-[#10B981] font-medium py-2 px-3 rounded-lg hover:bg-white/5 transition-all"
+                  className="text-white/80 hover:text-[#22D478] font-medium py-2 px-3 rounded-lg hover:bg-white/5 transition-all"
                 >
                   {link.label}
                 </a>
@@ -124,7 +126,7 @@ export default function Navbar() {
               <a
                 href="#actua"
                 onClick={() => setMenuOpen(false)}
-                className="mt-2 text-center py-3 rounded-full bg-[#F97316] text-white font-bold hover:bg-[#ea6c0a] transition-colors"
+                className="mt-2 text-center py-3 rounded-full bg-[#FF6B35] text-white font-bold hover:bg-[#d4511f] transition-colors"
               >
                 Firma Ahora
               </a>

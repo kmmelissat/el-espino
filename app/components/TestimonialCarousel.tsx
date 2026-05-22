@@ -10,7 +10,7 @@ const testimonials = [
     role: "Madre de familia, San Salvador",
     avatar: "👩",
     text: "Crecí corriendo por El Espino. Mis hijos también merecen ese mismo regalo. No podemos dejar que el cemento se lo lleve.",
-    color: "#10B981",
+    color: "#22D478",
   },
   {
     name: "Carlos M.",
@@ -24,7 +24,7 @@ const testimonials = [
     role: "Estudiante universitaria, 22 años",
     avatar: "👩‍🎓",
     text: "Mi generación va a cargar con las consecuencias de esta decisión. Por eso salimos a marchar. #TodosSomosElEspino",
-    color: "#F97316",
+    color: "#FF6B35",
   },
   {
     name: "Ernesto V.",
@@ -38,7 +38,7 @@ const testimonials = [
     role: "Activista ambiental",
     avatar: "🧕",
     text: "Las leyes ambientales de El Salvador protegen este espacio. Si el gobierno las ignora, es la ciudadanía quien debe hacer respetar sus derechos.",
-    color: "#34D399",
+    color: "#BEF6AF",
   },
   {
     name: "Diego A.",
@@ -79,7 +79,7 @@ export default function TestimonialCarousel() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(16,185,129,0.05)_0%,transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(34,212,120,0.05)_0%,transparent_70%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -88,7 +88,7 @@ export default function TestimonialCarousel() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#10B981]/10 border border-[#10B981]/30 text-[#10B981] text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-[#22D478]/10 border border-[#22D478]/30 text-[#22D478] text-sm font-semibold mb-4">
             💬 Voces del Pueblo
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0F172A] dark:text-white">
@@ -108,7 +108,7 @@ export default function TestimonialCarousel() {
                 exit={{ opacity: 0, x: -40, scale: 0.95 }}
                 transition={{ duration: 0.4, delay: i * 0.05 }}
                 className={`glass rounded-2xl p-6 flex flex-col gap-4 ${
-                  i === 1 ? "border-[#10B981]/40 scale-105" : "border-white/10"
+                  i === 1 ? "border-[#22D478]/40 scale-105" : "border-white/10"
                 }`}
                 style={{ borderColor: i === 1 ? `${testimonial.color}50` : undefined }}
               >
@@ -154,7 +154,7 @@ export default function TestimonialCarousel() {
         <div className="flex items-center justify-center gap-4">
           <button
             onClick={prev}
-            className="w-10 h-10 rounded-full glass flex items-center justify-center text-white hover:text-[#10B981] transition-colors hover:scale-110 active:scale-95"
+            className="w-10 h-10 rounded-full glass flex items-center justify-center text-white hover:text-[#22D478] transition-colors hover:scale-110 active:scale-95"
             aria-label="Previous"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -168,7 +168,7 @@ export default function TestimonialCarousel() {
                 className="h-2 rounded-full transition-all duration-300"
                 style={{
                   width: i === current ? "24px" : "8px",
-                  backgroundColor: i === current ? "#10B981" : "rgba(255,255,255,0.2)",
+                  backgroundColor: i === current ? "#22D478" : "rgba(255,255,255,0.2)",
                 }}
                 aria-label={`Go to testimonial ${i + 1}`}
               />
@@ -177,7 +177,7 @@ export default function TestimonialCarousel() {
 
           <button
             onClick={next}
-            className="w-10 h-10 rounded-full glass flex items-center justify-center text-white hover:text-[#10B981] transition-colors hover:scale-110 active:scale-95"
+            className="w-10 h-10 rounded-full glass flex items-center justify-center text-white hover:text-[#22D478] transition-colors hover:scale-110 active:scale-95"
             aria-label="Next"
           >
             <ChevronRight className="w-5 h-5" />

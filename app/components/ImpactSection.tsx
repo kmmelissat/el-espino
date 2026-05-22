@@ -70,11 +70,11 @@ export default function ImpactSection() {
             initial={{ opacity: 0, x: -40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="glass rounded-2xl p-8 border border-[#10B981]/30"
+            className="glass rounded-2xl p-8 border border-[#22D478]/30"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-full bg-[#10B981]/20 flex items-center justify-center">
-                <CheckCircle className="w-5 h-5 text-[#10B981]" />
+              <div className="w-10 h-10 rounded-full bg-[#22D478]/20 flex items-center justify-center">
+                <CheckCircle className="w-5 h-5 text-[#22D478]" />
               </div>
               <h3 className="text-2xl font-black text-white">Hoy: El Espino</h3>
             </div>
@@ -87,7 +87,7 @@ export default function ImpactSection() {
                   transition={{ delay: 0.3 + i * 0.08 }}
                   className="flex items-start gap-3 text-white/80"
                 >
-                  <span className="text-[#10B981] mt-0.5 text-lg">🌿</span>
+                  <span className="text-[#22D478] mt-0.5 text-lg">🌿</span>
                   <span>{item}</span>
                 </motion.li>
               ))}
@@ -135,9 +135,9 @@ export default function ImpactSection() {
             <div
               key={fact.description}
               className="text-center glass rounded-2xl py-8 px-4"
-              style={{ borderColor: i === 2 ? "rgba(239,68,68,0.3)" : "rgba(16,185,129,0.2)" }}
+              style={{ borderColor: i === 2 ? "rgba(239,68,68,0.3)" : "rgba(34,212,120,0.2)" }}
             >
-              <p className="text-4xl font-black" style={{ color: i === 2 ? "#EF4444" : "#10B981" }}>
+              <p className="text-4xl font-black" style={{ color: i === 2 ? "#EF4444" : "#22D478" }}>
                 {fact.number}
                 <span className="text-2xl"> {fact.unit}</span>
               </p>
@@ -155,7 +155,7 @@ export default function ImpactSection() {
         >
           <blockquote className="text-2xl sm:text-3xl font-bold text-white/90 italic max-w-3xl mx-auto leading-relaxed">
             &ldquo;Destruir El Espino no es progreso.{" "}
-            <span className="text-[#10B981] not-italic font-black">Es una sentencia de muerte</span>{" "}
+            <span className="text-[#22D478] not-italic font-black">Es una sentencia de muerte</span>{" "}
             para el ecosistema urbano de San Salvador.&rdquo;
           </blockquote>
           <p className="text-white/40 mt-4 text-sm">— Ambientalistas y ciudadanos salvadoreños</p>

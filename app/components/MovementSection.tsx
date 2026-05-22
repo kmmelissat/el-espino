@@ -12,7 +12,7 @@ const actions = [
     description: "Tu firma en Change.org suma presión política real. Cada nombre cuenta.",
     cta: "Firmar Ahora",
     href: "https://www.change.org",
-    color: "#F97316",
+    color: "#FF6B35",
     primary: true,
   },
   {
@@ -22,7 +22,7 @@ const actions = [
     description: "Usa #TodosSomosElEspino y #NoAlCIFCO. Haz que la causa sea viral.",
     cta: "Compartir",
     href: "#compartir",
-    color: "#10B981",
+    color: "#22D478",
     primary: false,
   },
   {
@@ -65,8 +65,8 @@ export default function MovementSection() {
 
   return (
     <section id="movimiento" ref={ref} className="relative py-24 bg-[#0F172A] overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(16,185,129,0.08)_0%,transparent_60%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(249,115,22,0.06)_0%,transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(34,212,120,0.08)_0%,transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,107,53,0.06)_0%,transparent_60%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -76,7 +76,7 @@ export default function MovementSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#F97316]/10 border border-[#F97316]/30 text-[#F97316] text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-[#FF6B35]/10 border border-[#FF6B35]/30 text-[#FF6B35] text-sm font-semibold mb-4">
             🌱 Todos Somos El Espino
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
@@ -99,7 +99,7 @@ export default function MovementSection() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className={`glass rounded-2xl p-6 flex flex-col gap-4 group hover:-translate-y-2 transition-transform duration-300 ${
-                  action.primary ? "border-[#F97316]/40" : "border-white/10"
+                  action.primary ? "border-[#FF6B35]/40" : "border-white/10"
                 }`}
               >
                 <div
@@ -141,7 +141,7 @@ export default function MovementSection() {
             {hashtags.map((tag) => (
               <span
                 key={tag}
-                className="px-4 py-2 rounded-full glass text-[#10B981] text-sm font-semibold border border-[#10B981]/20 hover:border-[#10B981]/50 cursor-pointer transition-all hover:scale-105"
+                className="px-4 py-2 rounded-full glass text-[#22D478] text-sm font-semibold border border-[#22D478]/20 hover:border-[#22D478]/50 cursor-pointer transition-all hover:scale-105"
                 onClick={() => navigator.clipboard?.writeText(tag)}
               >
                 {tag}

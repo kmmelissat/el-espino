@@ -29,16 +29,16 @@ export default function HeroSection() {
         style={{ y }}
         className="absolute inset-0"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A] via-[#064E3B] to-[#0F172A]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(16,185,129,0.15)_0%,transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_20%,rgba(249,115,22,0.08)_0%,transparent_50%)]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A] via-[#0F8845] to-[#0F172A]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(34,212,120,0.15)_0%,transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_20%,rgba(255,107,53,0.08)_0%,transparent_50%)]" />
 
         {/* Grid pattern overlay */}
         <div
           className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: `linear-gradient(rgba(16,185,129,0.3) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(16,185,129,0.3) 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(rgba(34,212,120,0.3) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(34,212,120,0.3) 1px, transparent 1px)`,
             backgroundSize: "60px 60px",
           }}
         />
@@ -48,7 +48,7 @@ export default function HeroSection() {
       {floatingLeaves.map((leaf, i) => (
         <motion.div
           key={i}
-          className="absolute text-[#10B981] opacity-30 pointer-events-none select-none"
+          className="absolute text-[#22D478] opacity-30 pointer-events-none select-none"
           style={{ left: leaf.x, top: `${15 + i * 12}%`, fontSize: leaf.size }}
           animate={{
             y: [0, -30, 0],
@@ -78,8 +78,8 @@ export default function HeroSection() {
           transition={{ duration: 0.6 }}
           className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-8"
         >
-          <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
-          <span className="text-[#10B981] text-sm font-semibold">Movimiento Ciudadano Activo</span>
+          <span className="w-2 h-2 rounded-full bg-[#22D478] animate-pulse" />
+          <span className="text-[#22D478] text-sm font-semibold">Movimiento Ciudadano Activo</span>
         </motion.div>
 
         {/* Main heading */}
@@ -101,7 +101,7 @@ export default function HeroSection() {
           className="text-white/70 text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto mb-4 font-light leading-relaxed"
         >
           El proyecto CIFCO amenaza destruir{" "}
-          <span className="text-[#F97316] font-semibold">55,711 m²</span> del pulmón verde
+          <span className="text-[#FF6B35] font-semibold">55,711 m²</span> del pulmón verde
           de San Salvador. El tiempo se acaba.
         </motion.p>
 
@@ -127,7 +127,7 @@ export default function HeroSection() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-            className="pulse-btn inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#F97316] text-white font-bold text-lg shadow-lg hover:bg-[#ea6c0a] transition-colors glow-orange"
+            className="pulse-btn inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#FF6B35] text-white font-bold text-lg shadow-lg hover:bg-[#d4511f] transition-colors glow-orange"
           >
             <span>✍️ Firma la Petición</span>
             <ExternalLink className="w-5 h-5" />
@@ -137,7 +137,7 @@ export default function HeroSection() {
             href="#problema"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full glass text-white font-semibold text-lg hover:border-[#10B981] hover:text-[#10B981] transition-all"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full glass text-white font-semibold text-lg hover:border-[#22D478] hover:text-[#22D478] transition-all"
           >
             <TreePine className="w-5 h-5" />
             <span>Conoce el Problema</span>

@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { TreePine, Globe, PlayCircle, Mail, Heart } from "lucide-react";
+import { Globe, PlayCircle, Mail, Heart } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -10,14 +11,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-full bg-[#10B981] flex items-center justify-center">
-                <TreePine className="w-6 h-6 text-white" />
-              </div>
-              <span className="font-bold text-xl">
-                <span className="gradient-text">Salvemos</span>{" "}
-                <span className="text-white">El Espino</span>
-              </span>
+            <div className="flex items-center mb-4">
+              <Image
+                src="/logo.svg"
+                alt="El Espino"
+                width={56}
+                height={56}
+              />
             </div>
             <p className="text-white/60 text-sm leading-relaxed">
               Un movimiento ciudadano para proteger el pulmón verde de San Salvador y las futuras generaciones de El Salvador.
@@ -30,7 +30,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {["El Problema", "Impacto", "Movimiento", "Actúa Ahora"].map((item) => (
                 <li key={item}>
-                  <a href={`#${item.toLowerCase().replace(" ", "-")}`} className="text-white/60 hover:text-[#10B981] text-sm transition-colors">
+                  <a href={`#${item.toLowerCase().replace(" ", "-")}`} className="text-white/60 hover:text-[#22D478] text-sm transition-colors">
                     {item}
                   </a>
                 </li>
@@ -54,7 +54,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 rounded-full glass flex items-center justify-center text-white/70 hover:text-[#10B981] hover:border-[#10B981] transition-colors"
+                  className="w-10 h-10 rounded-full glass flex items-center justify-center text-white/70 hover:text-[#22D478] hover:border-[#22D478] transition-colors"
                   aria-label={label}
                 >
                   <Icon className="w-4 h-4" />
