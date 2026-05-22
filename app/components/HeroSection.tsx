@@ -1,12 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { PETITION_URL } from "@/app/constants";
-
-const tags = ["Reforestación", "Conservación", "Acción"];
 
 const marqueeWords = [
   "REFORESTACIÓN",
@@ -22,7 +19,6 @@ const marqueeWords = [
 ];
 
 export default function HeroSection() {
-  const [activeTag, setActiveTag] = useState(0);
 
   return (
     <section className="relative lg:min-h-screen bg-green-extra-light flex flex-col overflow-hidden">
@@ -86,27 +82,6 @@ export default function HeroSection() {
               </div>
             </motion.div>
 
-            {/* Filter pills */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              className="flex flex-wrap gap-2"
-            >
-              {tags.map((tag, i) => (
-                <button
-                  key={tag}
-                  onClick={() => setActiveTag(i)}
-                  className={`px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 ${
-                    activeTag === i
-                      ? "bg-[#0F172A] text-white"
-                      : "border-2 border-[#0F172A]/15 text-[#0F172A] hover:border-[#22D478] hover:text-[#1BA961]"
-                  }`}
-                >
-                  {tag}
-                </button>
-              ))}
-            </motion.div>
           </div>
 
           {/* 3. Main heading */}
