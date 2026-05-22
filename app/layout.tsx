@@ -15,7 +15,10 @@ const climateCrisis = Climate_Crisis({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://salvemoselespino.sv"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://salvemoselespino.vercel.app")
+  ),
   title: "Salvemos El Espino | Protege el Pulmón de San Salvador",
   description:
     "Únete al movimiento ciudadano para salvar El Espino del proyecto CIFCO. Firma la petición y protege el pulmón verde de San Salvador.",
