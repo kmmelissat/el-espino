@@ -16,11 +16,23 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [darkSection, setDarkSection] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const check = () => {
+      setScrolled(window.scrollY > 50);
+      const navBottom = 80;
+      const sections = document.querySelectorAll<HTMLElement>('[data-nav-theme="dark"]');
+      let over = false;
+      sections.forEach((s) => {
+        const r = s.getBoundingClientRect();
+        if (r.top <= navBottom && r.bottom > 0) over = true;
+      });
+      setDarkSection(over);
+    };
+    window.addEventListener("scroll", check, { passive: true });
+    check();
+    return () => window.removeEventListener("scroll", check);
   }, []);
 
   return (
@@ -35,7 +47,7 @@ export default function Navbar() {
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-360 mx-auto px-5 sm:px-10 lg:px-16 xl:px-20">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <a href="#" className="flex items-center group">
@@ -55,7 +67,7 @@ export default function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-green-dark/80 hover:text-green-very-dark font-semibold transition-colors duration-200 text-sm tracking-wide"
+                  className={`font-semibold transition-colors duration-200 text-sm tracking-wide ${darkSection ? "text-white/80 hover:text-white" : "text-green-dark/80 hover:text-green-very-dark"}`}
                 >
                   {link.label}
                 </a>
@@ -73,7 +85,9 @@ export default function Navbar() {
 
               <button
                 className={`md:hidden w-9 h-9 rounded-full flex items-center justify-center transition-colors ${
-                  scrolled
+                  darkSection
+                    ? "bg-white/10 text-white hover:bg-white/20"
+                    : scrolled
                     ? "bg-green-100 text-green-800 hover:bg-green-200"
                     : "bg-white/30 backdrop-blur-sm text-green-900 hover:bg-white/50"
                 }`}

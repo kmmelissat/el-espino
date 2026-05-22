@@ -66,7 +66,7 @@ export default function StatsCounter() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="relative bg-navy overflow-hidden">
+    <section ref={ref} data-nav-theme="dark" className="relative bg-navy overflow-hidden">
       {/* Subtle radial glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,212,120,0.04)_0%,transparent_65%)] pointer-events-none" />
 

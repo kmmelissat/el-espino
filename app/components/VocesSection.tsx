@@ -43,7 +43,7 @@ export default function VocesSection() {
   };
 
   return (
-    <section className="relative py-24 bg-navy overflow-hidden">
+    <section data-nav-theme="dark" className="relative py-24 bg-navy overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,212,120,0.05)_0%,transparent_60%)]" />
 
       <div className="relative z-10">
